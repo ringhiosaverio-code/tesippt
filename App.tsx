@@ -7,6 +7,7 @@ import {
   PackageCheck, PanelTopOpen, PieChart, Route, ShieldCheck, Sparkles, SunMedium, Users,
   X, Zap
 } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import React, { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
@@ -156,7 +157,7 @@ function Proof(_: SlideProps) {
 }
 
 function Process(_: SlideProps) {
-  const items=[['Materie prime',Boxes],['Approvvigionamento',Route],['Trasformazione',Factory],['Energia',Zap],['Mangime',PackageCheck],['Distribuzione',Route],['Allevamento',Users]]
+  const items: [string, LucideIcon][] = [['Materie prime',Boxes],['Approvvigionamento',Route],['Trasformazione',Factory],['Energia',Zap],['Mangime',PackageCheck],['Distribuzione',Route],['Allevamento',Users]]
   return <Shell><TitleBlock kicker="04 · Perimetro" title="Entriamo nel mangimificio" text="Il processo è più ampio dell'analisi quantitativa. La tesi misura la componente energetica della fase di trasformazione all'interno dello stabilimento." />
     <div className="mt-12 grid grid-cols-2 md:grid-cols-7 gap-3 items-stretch">{items.map(([name,Icon],i)=><motion.div key={String(name)} initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:i*.08}} className={`rounded-2xl p-4 border ${i===2||i===3||i===4?'border-[#a8bc71]/50 bg-[#9fb568]/10':'border-white/10 bg-white/[.035]'}`}><Icon size={22} className="opacity-70"/><div className="mt-8 text-xs md:text-sm">{name}</div></motion.div>)}</div>
     <div className="mt-8 grid md:grid-cols-[1fr_auto_1fr] items-center gap-5"><div className="hairline"/><div className="source-pill !px-5 !py-3 text-center">GATE-TO-GATE · ricezione → stoccaggio/confezionamento</div><div className="hairline rotate-180"/></div>
@@ -269,7 +270,7 @@ function BMC(_: SlideProps) {
 }
 
 function Value(_: SlideProps) {
-  const core=['DATI','INDICATORI','INFORMAZIONE','DECISIONE']
+  const cards: [string, string, LucideIcon][] = ['DATI','INDICATORI','INFORMAZIONE','DECISIONE']
   const branches=['ENERGIA','APPROVVIGIONAMENTI','QUALITÀ','FORNITORI','PERSONALE','LOGISTICA','BUSINESS MODEL']
   return <Shell><div className="text-center"><div className="kicker">14 · Valore operativo</div><h2 className="mt-4 text-5xl md:text-7xl font-semibold tracking-[-.05em]">Quando l'informazione diventa <span className="font-serif italic text-[#cbd6a4]">utilizzabile</span></h2></div><div className="mt-12 flex flex-col md:flex-row items-center justify-center gap-3">{core.map((c,i)=><React.Fragment key={c}><div className={`rounded-full px-6 py-4 text-xs tracking-[.17em] ${i===3?'bg-[#9fb568] text-[#102016] font-bold':'glass'}`}>{c}</div>{i<3&&<ArrowRight className="rotate-90 md:rotate-0 opacity-35"/>}</React.Fragment>)}</div><div className="mt-12 flex flex-wrap justify-center gap-3">{branches.map(b=><motion.div whileHover={{y:-4}} key={b} className="rounded-2xl border border-white/10 bg-white/[.035] px-5 py-4 text-xs tracking-[.12em]">{b}</motion.div>)}</div><p className="mt-10 text-center text-lg md:text-2xl text-white/66">Il valore operativo della sostenibilità nasce quando <span className="text-white">l'informazione entra nei processi decisionali</span>.</p></Shell>
 }
@@ -290,7 +291,7 @@ function Roadmap(_: SlideProps) {
 }
 
 function Result(_: SlideProps) {
-  const items=['UN QUADRO DELLE EVIDENZE ESG','UN’ANALISI ENERGETICO-EMISSIVA','UNA LETTURA ECONOMICA','49 INDICATORI','UN BUSINESS MODEL CANVAS','UNA BASE PER IL MONITORAGGIO','UNA ROADMAP DI MIGLIORAMENTO']
+  const items: [string, LucideIcon][] = ['UN QUADRO DELLE EVIDENZE ESG','UN’ANALISI ENERGETICO-EMISSIVA','UNA LETTURA ECONOMICA','49 INDICATORI','UN BUSINESS MODEL CANVAS','UNA BASE PER IL MONITORAGGIO','UNA ROADMAP DI MIGLIORAMENTO']
   return <Shell><div className="grid lg:grid-cols-[.82fr_1.18fr] gap-10 items-center"><TitleBlock kicker="18 · Risposta finale" title="Cosa ha prodotto questa tesi?" text="Un'integrazione metodologica tra misurazione, reporting e modello di business, entro un perimetro esplicito e con limiti dichiarati."/><div className="space-y-3">{items.map((x,i)=><motion.div key={x} initial={{opacity:0,x:30}} animate={{opacity:1,x:0}} transition={{delay:i*.08}} className="flex items-center gap-4 glass rounded-2xl px-5 py-4"><span className="text-xs text-white/30">0{i+1}</span><span className="text-sm md:text-base tracking-[.04em]">{x}</span></motion.div>)}</div></div><div className="mt-8 text-center text-2xl md:text-4xl font-medium">DATI + SOSTENIBILITÀ + ECONOMIA + STRATEGIA <span className="text-[#c7d49a]">→ VALORE PER LE DECISIONI</span></div></Shell>
 }
 
